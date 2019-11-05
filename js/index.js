@@ -17,6 +17,7 @@ function fetchBooks() {
 function displayBooks(booksArr) {
   let list = document.getElementById('list');
   let showPanel = document.getElementById('show-panel');
+  
   for (const book of booksArr) {
     let li = document.createElement('li');
     li.textContent = book.title;
@@ -29,6 +30,14 @@ function displayBooks(booksArr) {
     let likeButton = document.createElement('button');
     likeButton.textContent = 'gobblin goblins'
 
+    let newUser = {};
+
+    newUser.id = 1;
+    newUser.username = "pourpos";
+
+    let bookUsers = book.users;
+    bookUsers[book.users.length] = newUser;
+
     likeButton.addEventListener('click', () => {
       fetch(BOOKS_URL + '/' + book.id, {
         method: 'PATCH',
@@ -38,7 +47,7 @@ function displayBooks(booksArr) {
             Accept: "application/json"
         },
         body: JSON.stringify({
-          'users': book.users.push({id: 1, username: 'pouros'})
+          users: bookUsers
         })
       })
     })
@@ -59,9 +68,4 @@ function displayBooks(booksArr) {
     })
     list.appendChild(li);
   }
-
-function onClick(li) {
-
-}
-
 }
