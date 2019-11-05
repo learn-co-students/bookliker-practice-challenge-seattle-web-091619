@@ -28,7 +28,7 @@ function displayBooks(booksArr) {
     let usersList = document.createElement('ul')
     let user = document.createElement('li');
     let likeButton = document.createElement('button');
-    likeButton.textContent = 'gobblin goblins'
+    likeButton.textContent = 'Read Book'
 
     let newUser = {};
 
